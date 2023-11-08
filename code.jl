@@ -8,3 +8,4 @@ weight = 0.4
 predict(inputs, weight) = inputs .* weight
 loss(inputs, outputs, weight) = mean((outputs - (inputs .* weight)) .^2)
 
+dloss(inputs, outputs, weight) = Tracker.data(Tracker .gradient(loss, inputs, outputs, weight)[3])
