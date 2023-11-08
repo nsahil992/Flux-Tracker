@@ -14,6 +14,7 @@ dloss(inputs, outputs, weight) = Tracker.data(Tracker .gradient(loss, inputs, ou
 for i in 1:100
     println("Current prediction: $(predict(inputs, weight))")
     println("Current loss: $(loss(inputs, outputs, weight))")
+    println("")
     println("Current weight: $(weight)")
     d = dloss(inputs, outputs, weight)
     global weight -= d * 0.1
