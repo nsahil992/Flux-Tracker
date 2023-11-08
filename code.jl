@@ -14,3 +14,6 @@ for i in 1:100
     println("Current prediction: $(predict(inputs, weight))")
     println("Current loss: $(loss(inputs, outputs, weight))")
     println("Current weight: $(weight)")
+    d = dloss(inputs, outputs, weight)
+    global weight -= d * 0.1
+end
