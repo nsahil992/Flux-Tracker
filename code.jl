@@ -9,3 +9,8 @@ predict(inputs, weight) = inputs .* weight
 loss(inputs, outputs, weight) = mean((outputs - (inputs .* weight)) .^2)
 
 dloss(inputs, outputs, weight) = Tracker.data(Tracker .gradient(loss, inputs, outputs, weight)[3])
+
+for i in 1:100
+    println("Current prediction: $(predict(inputs, weight))")
+    println("Current loss: $(loss(inputs, outputs, weight))")
+    println("Current weight: $(weight)")
