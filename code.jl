@@ -1,5 +1,5 @@
 using Statistics
-using Flux.Tracker:
+using Flux.Tracker
 
 inputs = [0.2, -0.3, 0.5, 1, -0.9]
 outputs = [-0.2, 0.3, -0.5, -1, 0.9]
@@ -10,6 +10,7 @@ loss(inputs, outputs, weight) = mean((outputs - (inputs .* weight)) .^2)
 
 dloss(inputs, outputs, weight) = Tracker.data(Tracker .gradient(loss, inputs, outputs, weight)[3])
 
+# creating a training loop
 for i in 1:100
     println("Current prediction: $(predict(inputs, weight))")
     println("Current loss: $(loss(inputs, outputs, weight))")
